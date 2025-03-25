@@ -5,12 +5,13 @@ import App from "./App";
 test("increments counter when button is clicked", () => {
   render(<App />);
   
-  // Buscar el botón con el texto "count is 0"
+  // Find the button with the text "count is 0"
   const button = screen.getByText(/count is/i);
 
-  // Simular un clic en el botón
+  // Simulate a click on the button
   fireEvent.click(button);
 
-  // Verificar que el contador se haya incrementado
+  // Verify that the counter has incremented
   expect(button).toHaveTextContent("count is 1");
 });
+
