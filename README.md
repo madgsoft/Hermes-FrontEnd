@@ -23,3 +23,14 @@ npm install
 ```sh
 npm run dev
 ```
+## 🛠️ Build and Run the Docker Container
+
+1️⃣ Build the image:
+```sh
+docker build -t hermes-frontend-image .
+```
+
+2️⃣ Run the container:
+```sh
+docker run -p 3000:80 --name hermes-frontend-container hermes-frontend-image
+```
