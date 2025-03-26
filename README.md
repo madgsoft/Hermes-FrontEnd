@@ -27,11 +27,11 @@ npm run dev
 
 1️⃣ Build the image:
 ```sh
-docker build -t hermes-frontend-image .
+docker build -t hermes-frontend .
 ```
 2️⃣ Run the container:
 ```sh
-docker run -p 3000:80 --name hermes-frontend-container hermes-frontend-image
+docker run -p 3000:80 mi-react-app
 ```
-📌 This will run the application and make it accessible at http://localhost:3000.   
+📌 This will run the application and make it accessible at http://localhost:3000.
 
