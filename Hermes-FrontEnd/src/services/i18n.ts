@@ -8,6 +8,14 @@ interface Translations {
   features: string;
   contact: string;
   description: string;
+  addLocation: string;
+  editLocation: string;
+  deleteLocation: string;
+  name: string;
+  address: string;
+  actions: string;
+  cancel: string;
+  save: string;
 }
 
 const translations: Record<Language, Translations> = {
@@ -16,21 +24,45 @@ const translations: Record<Language, Translations> = {
     about: 'Acerca de',
     features: 'Características',
     contact: 'Contacto',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+    addLocation: 'Añadir ubicación',
+    editLocation: 'Editar ubicación',
+    deleteLocation: 'Eliminar ubicación',
+    name: 'Nombre',
+    address: 'Dirección',
+    description: 'Descripción',
+    actions: 'Acciones',
+    cancel: 'Cancelar',
+    save: 'Guardar'
   },
   en: {
     tryNow: 'Try it now',
     about: 'About',
     features: 'Features',
     contact: 'Contact',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+    addLocation: 'Add location',
+    editLocation: 'Edit location',
+    deleteLocation: 'Delete location',
+    name: 'Name',
+    address: 'Address',
+    description: 'Description',
+    actions: 'Actions',
+    cancel: 'Cancel',
+    save: 'Save'
   },
   fr: {
     tryNow: 'Essayez maintenant',
     about: 'À propos',
     features: 'Fonctionnalités',
     contact: 'Contact',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+    addLocation: 'Ajouter un emplacement',
+    editLocation: 'Modifier l\'emplacement',
+    deleteLocation: 'Supprimer l\'emplacement',
+    name: 'Nom',
+    address: 'Adresse',
+    description: 'Description',
+    actions: 'Actions',
+    cancel: 'Annuler',
+    save: 'Enregistrer'
   },
 };
 

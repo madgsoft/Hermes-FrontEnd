@@ -5,6 +5,7 @@
 .navbar-glass {
   background: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(8px);
+  z-index: 1030;
 }
 
 .dark {
@@ -44,4 +45,55 @@
 
 .dark .background-map {
   opacity: 0.1;
+}
+
+/* Sidebar styles */
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 56px;
+  transition: width 0.3s;
+  z-index: 1020;
+}
+
+.sidebar .btn-link {
+  text-decoration: none;
+}
+
+/* Main content adjustment */
+.main-content {
+  margin-left: 60px;
+  transition: margin-left 0.3s;
+}
+
+.main-content.sidebar-open {
+  margin-left: 250px;
+}
+
+/* Dark theme table styles */
+.dark .table {
+  color: #ffffff;
+}
+
+.dark .table thead th {
+  border-color: #2d2d2d;
+}
+
+.dark .table td {
+  border-color: #2d2d2d;
+}
+
+/* Form styles in dark mode */
+.dark .form-control {
+  background-color: #2d2d2d;
+  border-color: #3d3d3d;
+  color: #ffffff;
+}
+
+.dark .form-control:focus {
+  background-color: #2d2d2d;
+  border-color: #4d4d4d;
+  color: #ffffff;
 }

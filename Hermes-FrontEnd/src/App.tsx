@@ -1,22 +1,28 @@
-import React, { useEffect } from 'react';
+/* import React, { useEffect } from 'react'; */
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Home } from './views/Home';
+import { Dashboard } from './views/Dashboard';
 import { useTheme } from './services/theme';
 
 function App() {
   const { theme } = useTheme();
 
-  useEffect(() => {
-    // Initialize Bootstrap's JavaScript
+ /*  useEffect(() => {
     import('bootstrap');
   }, []);
-
+ */
   return (
-    <div className={theme === 'dark' ? 'dark' : ''}>
-      <Navbar />
-      <Home />
-    </div>
+    <BrowserRouter>
+      <div className={theme === 'dark' ? 'dark' : ''}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
-export default App;
+export default App

@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../services/i18n';
 import { motion } from 'framer-motion';
 
 export const Home: React.FC = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   return (
     <div className="position-relative min-vh-100">
@@ -33,6 +35,7 @@ export const Home: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn btn-primary btn-lg px-5 py-3 rounded-pill"
+            onClick={() => navigate('/dashboard')}
           >
             {t('tryNow')}
           </motion.button>
