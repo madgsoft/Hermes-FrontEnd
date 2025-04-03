@@ -1,0 +1,142 @@
+/* Sidebar */
+.sidebar {
+    background-color: #343a40;
+    color: white;
+    transition: width 0.3s;
+  }
+  
+  .sidebar.open {
+    width: 250px;
+  }
+  
+  .sidebar:not(.open) {
+    width: 60px;
+  }
+  
+  .sidebar .btn-link {
+    color: white;
+  }
+  
+  .sidebar .menu-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .sidebar .menu-item span {
+    margin-left: 10px;
+  }
+  
+  /* Action Buttons */
+  .action-bar {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Location Form */
+  .location-form {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 400px;
+    z-index: 1000;
+  }
+
+  .dark .table {
+    background-color: #222; /* Fondo oscuro */
+    color: white; /* Letras blancas */
+  }
+  
+  .dark .table th,
+  .dark .table td {
+    border-color: #444; /* Bordes más oscuros */
+  }
+  
+  .dark .table thead {
+    background-color: #333; /* Encabezado más oscuro */
+  }
+  
+  .dark .table tbody tr:hover {
+    background-color: #3a3a3a; /* Hover en filas */
+  }
+
+  
+  .dark .action-bar {
+    background-color: #1e1e1e; /* Fondo oscuro */
+    color: white; /* Letras blancas */
+    padding: 10px;
+  }
+  
+  .dark .btn-primary {
+    background-color: #6200ea; /* Morado */
+    border-color: #6200ea;
+    color: white;
+  }
+  
+  .dark .btn-primary:hover {
+    background-color: #7b1fa2;
+  }
+  
+  .dark .btn-secondary {
+    background-color: #444; /* Gris oscuro */
+    color: white;
+  }
+  
+  .dark .btn-secondary:hover {
+    background-color: #555;
+  }
+
+  .dark .location-form {
+    background-color: #1e1e1e; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Sombra sutil */
+  }
+  
+  .dark .location-form h3 {
+    color: #bb86fc; /* Morado claro */
+    text-align: center;
+  }
+  
+  .dark .location-form .form-label {
+    color: #bbb; /* Texto más claro */
+  }
+  
+  .dark .location-form .form-control {
+    background-color: #333; /* Input oscuro */
+    border: 1px solid #555;
+    color: white;
+  }
+  
+  .dark .location-form .form-control:focus {
+    background-color: #444;
+    border-color: #bb86fc; /* Resalte morado */
+    box-shadow: 0 0 5px rgba(187, 134, 252, 0.5);
+  }
+  
+  .dark .location-form .btn-primary {
+    background-color: #6200ea; /* Morado */
+    border-color: #6200ea;
+    color: white;
+  }
+  
+  .dark .location-form .btn-primary:hover {
+    background-color: #7b1fa2;
+  }
+  
+  .dark .location-form .btn-secondary {
+    background-color: #444; /* Gris oscuro */
+    color: white;
+  }
+  
+  .dark .location-form .btn-secondary:hover {
+    background-color: #555;
+  }
+  
+  

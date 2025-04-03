@@ -1,5 +1,5 @@
 # Use a Node.js base image for building the application
-FROM node:18 AS builder
+FROM node:20.12.2 AS builder
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci
 
 # Copy the entire application code
 COPY . .

@@ -48,7 +48,7 @@
 }
 
 /* Sidebar styles */
-.sidebar {
+ .sidebar {
   height: 100vh;
   position: fixed;
   top: 0;
@@ -63,14 +63,14 @@
 }
 
 /* Main content adjustment */
-.main-content {
+ .main-content {
   margin-left: 60px;
   transition: margin-left 0.3s;
 }
 
 .main-content.sidebar-open {
   margin-left: 250px;
-}
+} 
 
 /* Dark theme table styles */
 .dark .table {
@@ -83,7 +83,7 @@
 
 .dark .table td {
   border-color: #2d2d2d;
-}
+} 
 
 /* Form styles in dark mode */
 .dark .form-control {
@@ -96,4 +96,4 @@
   background-color: #2d2d2d;
   border-color: #4d4d4d;
   color: #ffffff;
-}
+}  

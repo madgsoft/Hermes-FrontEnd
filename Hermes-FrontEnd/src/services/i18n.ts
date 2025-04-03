@@ -1,4 +1,7 @@
 import { create } from 'zustand';
+import es from '../locales/es';
+import en from '../locales/en';
+import fr from '../locales/fr';
 
 type Language = 'es' | 'en' | 'fr';
 
@@ -7,73 +10,39 @@ interface Translations {
   about: string;
   features: string;
   contact: string;
-  description: string;
-  addLocation: string;
-  editLocation: string;
-  deleteLocation: string;
-  name: string;
-  address: string;
-  actions: string;
-  cancel: string;
-  save: string;
+  language: {
+    spanish: string;
+    english: string;
+    french: string;
+  };
 }
 
-const translations: Record<Language, Translations> = {
-  es: {
-    tryNow: 'Pruébalo ahora',
-    about: 'Acerca de',
-    features: 'Características',
-    contact: 'Contacto',
-    addLocation: 'Añadir ubicación',
-    editLocation: 'Editar ubicación',
-    deleteLocation: 'Eliminar ubicación',
-    name: 'Nombre',
-    address: 'Dirección',
-    description: 'Descripción',
-    actions: 'Acciones',
-    cancel: 'Cancelar',
-    save: 'Guardar'
-  },
-  en: {
-    tryNow: 'Try it now',
-    about: 'About',
-    features: 'Features',
-    contact: 'Contact',
-    addLocation: 'Add location',
-    editLocation: 'Edit location',
-    deleteLocation: 'Delete location',
-    name: 'Name',
-    address: 'Address',
-    description: 'Description',
-    actions: 'Actions',
-    cancel: 'Cancel',
-    save: 'Save'
-  },
-  fr: {
-    tryNow: 'Essayez maintenant',
-    about: 'À propos',
-    features: 'Fonctionnalités',
-    contact: 'Contact',
-    addLocation: 'Ajouter un emplacement',
-    editLocation: 'Modifier l\'emplacement',
-    deleteLocation: 'Supprimer l\'emplacement',
-    name: 'Nom',
-    address: 'Adresse',
-    description: 'Description',
-    actions: 'Actions',
-    cancel: 'Annuler',
-    save: 'Enregistrer'
-  },
-};
+const translations: Record<Language, Translations> = { es, en, fr };
 
-interface LanguageStore {
+const defaultLanguage: Language = navigator.language.startsWith('es')
+  ? 'es'
+  : navigator.language.startsWith('fr')
+  ? 'fr'
+  : 'en';
+
+export const useLanguage = create<{
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: keyof Translations) => string;
-}
-
-export const useLanguage = create<LanguageStore>((set, get) => ({
-  language: 'es',
+  t: (key: string) => string;
+}>((set, get) => ({
+  language: defaultLanguage,
   setLanguage: (lang) => set({ language: lang }),
-  t: (key) => translations[get().language][key],
+  t: (key) => {
+    const keys = key.split('.');
+    let value: any = translations[get().language];
+
+    for (const k of keys) {
+      value = value?.[k];
+      if (value === undefined) return `Missing translation: ${key}`;
+    }
+
+    return value;
+  },
 }));
+
+
