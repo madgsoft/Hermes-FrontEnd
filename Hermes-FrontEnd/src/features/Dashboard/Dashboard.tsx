@@ -123,35 +123,38 @@ export const Dashboard: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>{t("name")}</th>
-                  <th>{t("pipeline")}</th>
-                  <th>{t("dueDate")}</th>
-                  <th>{t("chainage")}</th>
-                  <th>{t("landSurvey")}</th>
-                  <th>{t("address")}</th>
-                  <th>{t("description")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  onClick={() => setSelectedLocation(defaultLocation)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <td>{defaultLocation.id}</td>
-                  <td>{defaultLocation.name}</td>
-                  <td>{defaultLocation.pipeline}</td>
-                  <td>{defaultLocation.dueDate}</td>
-                  <td>{defaultLocation.chainage}</td>
-                  <td>{defaultLocation.landSurvey}</td>
-                  <td>{defaultLocation.address}</td>
-                  <td>{defaultLocation.description}</td>
-                </tr>
-              </tbody>
-            </table>
+            
+            <div className="table-responsive">
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>{t("name")}</th>
+                    <th>{t("pipeline")}</th>
+                    <th>{t("dueDate")}</th>
+                    <th>{t("chainage")}</th>
+                    <th>{t("landSurvey")}</th>
+                    <th>{t("address")}</th>
+                    <th>{t("description")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    onClick={() => setSelectedLocation(defaultLocation)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <td>{defaultLocation.id}</td>
+                    <td>{defaultLocation.name}</td>
+                    <td>{defaultLocation.pipeline}</td>
+                    <td>{defaultLocation.dueDate}</td>
+                    <td>{defaultLocation.chainage}</td>
+                    <td>{defaultLocation.landSurvey}</td>
+                    <td>{defaultLocation.address}</td>
+                    <td>{defaultLocation.description}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </motion.div>
         </div>
 
@@ -164,8 +167,8 @@ export const Dashboard: React.FC = () => {
               exit={{ x: "100%" }}
               className="location-form"
             >
-              <h3 style={{paddingTop:"60px"}}>{t("addLocation")}</h3>
-              <form className="mt-4" style={{ maxHeight: "70vh"}}>
+              <h3 style={{ paddingTop: "60px" }}>{t("addLocation")}</h3>
+              <form className="mt-4" style={{ maxHeight: "70vh" }}>
                 <div className="row">
                   <div className="mb-3 col-md-6">
                     <label className="form-label">{t("name")}</label>
