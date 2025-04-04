@@ -6,12 +6,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import "leaflet/dist/leaflet.css";
 import "./Dashboard.css";
 
-const SetMapCenter: React.FC<{ center: [number, number]; zoom: number }> = ({ center, zoom }) => {
+const SetMapCenter: React.FC<{ center: [number, number]; zoom: number }> = ({
+  center,
+  zoom,
+}) => {
   const map = useMap();
 
   useEffect(() => {
     map.setView(center, zoom);
-  }, [map, center, zoom]); 
+  }, [map, center, zoom]);
 
   return null;
 };
@@ -21,7 +24,7 @@ const AttributionControl: React.FC = () => {
 
   useEffect(() => {
     map.attributionControl.setPrefix(false);
-    map.attributionControl.addAttribution('&copy; OpenStreetMap contributors');
+    map.attributionControl.addAttribution("&copy; OpenStreetMap contributors");
   }, [map]);
 
   return null;
@@ -30,6 +33,11 @@ const AttributionControl: React.FC = () => {
 const defaultLocation = {
   id: 1,
   name: "Default Location",
+  address: "221B Baker Street",
+  pipeline: "Pipeline A",
+  dueDate: "2025-04-01",
+  chainage: "12+345",
+  landSurvey: "Completed",
   latitude: 51.505,
   longitude: -0.09,
   description: "This is a default location.",
@@ -44,13 +52,6 @@ export const Dashboard: React.FC = () => {
   const { t } = useLanguage();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const defaultLocation = {
-    id: 1,
-    name: "Default Location",
-    latitude: 51.505,
-    longitude: -0.09,
-    description: "This is a default location.",
-  };
 
   return (
     <div className="d-flex">
@@ -84,12 +85,10 @@ export const Dashboard: React.FC = () => {
       <div className="flex-grow-1">
         {/* Map */}
         <div style={{ height: "60vh" }}>
-        <MapContainer style={{ height: '100%', width: '100%' }}>
-        <SetMapCenter center={mapCenter} zoom={13} />
+          <MapContainer style={{ height: "100%", width: "100%" }}>
+            <SetMapCenter center={mapCenter} zoom={13} />
             <AttributionControl />
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             <Marker position={mapCenter}>
               <Popup>{defaultLocation.name}</Popup>
             </Marker>
@@ -115,15 +114,31 @@ export const Dashboard: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <table className="table">
+            <table className="table table-striped">
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th>{t("name")}</th>
+                  <th>{t("pipeline")}</th>
+                  <th>{t("dueDate")}</th>
+                  <th>{t("chainage")}</th>
+                  <th>{t("landSurvey")}</th>
                   <th>{t("address")}</th>
                   <th>{t("description")}</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+                <tr>
+                  <td>{defaultLocation.id}</td>
+                  <td>{defaultLocation.name}</td>
+                  <td>{defaultLocation.pipeline}</td>
+                  <td>{defaultLocation.dueDate}</td>
+                  <td>{defaultLocation.chainage}</td>
+                  <td>{defaultLocation.landSurvey}</td>
+                  <td>{defaultLocation.address}</td>
+                  <td>{defaultLocation.description}</td>
+                </tr>
+              </tbody>
             </table>
           </motion.div>
         </div>
@@ -138,19 +153,56 @@ export const Dashboard: React.FC = () => {
               className="location-form"
             >
               <h3>{t("addLocation")}</h3>
-              <form className="mt-4">
-                <div className="mb-3">
-                  <label className="form-label">{t("name")}</label>
-                  <input type="text" className="form-control" />
+              <form
+                className="mt-4"
+                style={{
+                  maxHeight: "70vh",
+                  /* overflowY: "hidden",
+                  overflowX: "hidden", */
+                }}
+              >
+                <div className="row">
+                  <div className="mb-3 col-md-6">
+                    <label className="form-label">{t("name")}</label>
+                    <input type="text" className="form-control" />
+                  </div>
+                  <div className="mb-3 col-md-6">
+                    <label className="form-label">{t("address")}</label>
+                    <input type="text" className="form-control" />
+                  </div>
                 </div>
-                <div className="mb-3">
-                  <label className="form-label">{t("address")}</label>
-                  <input type="text" className="form-control" />
+
+                <div className="row">
+                  <div className="mb-3 col-md-6">
+                    <label className="form-label">{t("pipeline")}</label>
+                    <input type="text" className="form-control" />
+                  </div>
+                  <div className="mb-3 col-md-6">
+                    <label className="form-label">{t("dueDate")}</label>
+                    <input type="date" className="form-control" />
+                  </div>
                 </div>
+
+                <div className="row">
+                  <div className="mb-3 col-md-6">
+                    <label className="form-label">{t("chainage")}</label>
+                    <input type="text" className="form-control" />
+                  </div>
+                  <div className="mb-3 col-md-6">
+                    <label className="form-label">{t("landSurvey")}</label>
+                    <select className="form-control">
+                      <option value="">{t("selectOption")}</option>
+                      <option value="completed">{t("completed")}</option>
+                      <option value="pending">{t("pending")}</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div className="mb-3">
                   <label className="form-label">{t("description")}</label>
                   <textarea className="form-control" rows={3}></textarea>
                 </div>
+
                 <div className="d-flex justify-content-end">
                   <button
                     type="button"

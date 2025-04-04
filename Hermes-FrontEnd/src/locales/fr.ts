@@ -1,20 +1,24 @@
 export default {
-    tryNow: 'Essayez maintenant',
-    about: 'À propos',
-    features: 'Fonctionnalités',
-    contact: 'Contact',
-    language: {
-      spanish: 'Espagnol',
-      english: 'Anglais',
-      french: 'Français',
-    },
-    addLocation: 'Ajouter un emplacement',
-    name: 'Nom',
-    address: 'Adresse',
-    description: 'Description',
-    cancel: 'Annuler',
-    save: 'Enregistrer',
-  };
-  
-  
-  
+  tryNow: "Essayez-le maintenant",
+  about: "À propos",
+  features: "Fonctionnalités",
+  contact: "Contact",
+  language: {
+    spanish: "Espagnol",
+    english: "Anglais",
+    french: "Français",
+  },
+  addLocation: "Ajouter un lieu",
+  name: "Nom",
+  address: "Adresse",
+  description: "Description",
+  pipeline: "Pipeline",
+  dueDate: "Date limite",
+  chainage: "Chaînage",
+  landSurvey: "Étude du terrain",
+  cancel: "Annuler",
+  save: "Enregistrer",
+  selectOption: "Sélectionner une option",
+  completed: "Terminé",
+  pending: "En attente",
+};
