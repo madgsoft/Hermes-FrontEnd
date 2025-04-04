@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { LayoutDashboard, Home as HomeIcon, LogOut, Plus } from "lucide-react";
 import { useLanguage } from "../../services/i18n";
 import { motion, AnimatePresence } from "framer-motion";
+import { SliderDetail } from "./components/SliderDetail/SliderDetail";
 import "leaflet/dist/leaflet.css";
 import "./Dashboard.css";
 
@@ -50,7 +51,10 @@ const mapCenter: [number, number] = [
 
 export const Dashboard: React.FC = () => {
   const { t } = useLanguage();
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isAddFormOpen, setIsAddFormOpen] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState<
+    typeof defaultLocation | null
+  >(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
@@ -89,7 +93,12 @@ export const Dashboard: React.FC = () => {
             <SetMapCenter center={mapCenter} zoom={13} />
             <AttributionControl />
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker position={mapCenter}>
+            <Marker
+              position={mapCenter}
+              eventHandlers={{
+                click: () => setSelectedLocation(defaultLocation),
+              }}
+            >
               <Popup>{defaultLocation.name}</Popup>
             </Marker>
           </MapContainer>
@@ -100,7 +109,7 @@ export const Dashboard: React.FC = () => {
           <div className="container">
             <button
               className="btn btn-primary"
-              onClick={() => setIsFormOpen(true)}
+              onClick={() => setIsAddFormOpen(true)}
             >
               <Plus size={20} className="me-1" /> {t("addLocation")}
             </button>
@@ -128,7 +137,10 @@ export const Dashboard: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr
+                  onClick={() => setSelectedLocation(defaultLocation)}
+                  style={{ cursor: "pointer" }}
+                >
                   <td>{defaultLocation.id}</td>
                   <td>{defaultLocation.name}</td>
                   <td>{defaultLocation.pipeline}</td>
@@ -143,24 +155,17 @@ export const Dashboard: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Location Form */}
+        {/* Add Location Form (slide-in) */}
         <AnimatePresence>
-          {isFormOpen && (
+          {isAddFormOpen && (
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               className="location-form"
             >
-              <h3>{t("addLocation")}</h3>
-              <form
-                className="mt-4"
-                style={{
-                  maxHeight: "70vh",
-                  /* overflowY: "hidden",
-                  overflowX: "hidden", */
-                }}
-              >
+              <h3 style={{paddingTop:"60px"}}>{t("addLocation")}</h3>
+              <form className="mt-4" style={{ maxHeight: "70vh"}}>
                 <div className="row">
                   <div className="mb-3 col-md-6">
                     <label className="form-label">{t("name")}</label>
@@ -207,7 +212,7 @@ export const Dashboard: React.FC = () => {
                   <button
                     type="button"
                     className="btn btn-secondary me-2"
-                    onClick={() => setIsFormOpen(false)}
+                    onClick={() => setIsAddFormOpen(false)}
                   >
                     {t("cancel")}
                   </button>
@@ -217,6 +222,17 @@ export const Dashboard: React.FC = () => {
                 </div>
               </form>
             </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Slider Detail for Viewing Location */}
+        <AnimatePresence>
+          {selectedLocation && (
+            <SliderDetail
+              isOpen={true}
+              location={selectedLocation}
+              onClose={() => setSelectedLocation(null)}
+            />
           )}
         </AnimatePresence>
       </div>
