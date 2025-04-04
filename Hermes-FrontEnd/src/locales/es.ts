@@ -1,19 +1,24 @@
 export default {
-    tryNow: 'Pruébalo ahora',
-    about: 'Acerca de',
-    features: 'Características',
-    contact: 'Contacto',
-    language: {
-      spanish: 'Español',
-      english: 'Inglés',
-      french: 'Francés',
-    },
-    addLocation: 'Añadir ubicación',
-    name: 'Nombre',
-    address: 'Dirección',
-    description: 'Descripción',
-    cancel: 'Cancelar',
-    save: 'Guardar',
-  };
-  
-  
+  tryNow: "Pruébalo ahora",
+  about: "Acerca de",
+  features: "Características",
+  contact: "Contacto",
+  language: {
+    spanish: "Español",
+    english: "Inglés",
+    french: "Francés",
+  },
+  addLocation: "Agregar ubicación",
+  name: "Nombre",
+  address: "Dirección",
+  description: "Descripción",
+  pipeline: "Oleoducto",
+  dueDate: "Fecha límite",
+  chainage: "Cadena",
+  landSurvey: "Estudio de terreno",
+  cancel: "Cancelar",
+  save: "Guardar",
+  selectOption: "Selecciona una opción",
+  completed: "Completado",
+  pending: "Pendiente",
+};
