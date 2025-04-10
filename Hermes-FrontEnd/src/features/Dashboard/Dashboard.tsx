@@ -1,35 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import React, { useState} from "react";
 import { LayoutDashboard, Home as HomeIcon, LogOut, Plus } from "lucide-react";
 import { useLanguage } from "../../services/i18n";
 import { motion, AnimatePresence } from "framer-motion";
 import { SliderDetail } from "./components/SliderDetail/SliderDetail";
+import { DashboardMap } from "./components/Map/Map";
 import "leaflet/dist/leaflet.css";
 import "./Dashboard.css";
 
-const SetMapCenter: React.FC<{ center: [number, number]; zoom: number }> = ({
-  center,
-  zoom,
-}) => {
-  const map = useMap();
-
-  useEffect(() => {
-    map.setView(center, zoom);
-  }, [map, center, zoom]);
-
-  return null;
-};
-
-const AttributionControl: React.FC = () => {
-  const map = useMap();
-
-  useEffect(() => {
-    map.attributionControl.setPrefix(false);
-    map.attributionControl.addAttribution("&copy; OpenStreetMap contributors");
-  }, [map]);
-
-  return null;
-};
 
 const defaultLocation = {
   id: 1,
@@ -89,19 +66,11 @@ export const Dashboard: React.FC = () => {
       <div className="flex-grow-1">
         {/* Map */}
         <div style={{ height: "60vh" }}>
-          <MapContainer style={{ height: "100%", width: "100%" }}>
-            <SetMapCenter center={mapCenter} zoom={13} />
-            <AttributionControl />
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker
-              position={mapCenter}
-              eventHandlers={{
-                click: () => setSelectedLocation(defaultLocation),
-              }}
-            >
-              <Popup>{defaultLocation.name}</Popup>
-            </Marker>
-          </MapContainer>
+          <DashboardMap
+            center={mapCenter}
+            location={defaultLocation}
+            onSelectLocation={setSelectedLocation}
+          />
         </div>
 
         {/* Action Buttons */}
@@ -111,7 +80,7 @@ export const Dashboard: React.FC = () => {
               className="btn btn-primary"
               onClick={() => setIsAddFormOpen(true)}
             >
-              <Plus size={20} className="me-1" /> {t("addLocation")}
+              <Plus size={20} className="me-1" /> {t("location.add")}
             </button>
           </div>
         </div>
@@ -123,19 +92,18 @@ export const Dashboard: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            
             <div className="table-responsive">
               <table className="table table-striped">
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>{t("name")}</th>
-                    <th>{t("pipeline")}</th>
-                    <th>{t("dueDate")}</th>
-                    <th>{t("chainage")}</th>
-                    <th>{t("landSurvey")}</th>
-                    <th>{t("address")}</th>
-                    <th>{t("description")}</th>
+                    <th>{t("location.name")}</th>
+                    <th>{t("location.pipeline")}</th>
+                    <th>{t("location.dueDate")}</th>
+                    <th>{t("location.chainage")}</th>
+                    <th>{t("location.landSurvey")}</th>
+                    <th>{t("location.address")}</th>
+                    <th>{t("location.description")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -167,47 +135,47 @@ export const Dashboard: React.FC = () => {
               exit={{ x: "100%" }}
               className="location-form"
             >
-              <h3 style={{ paddingTop: "60px" }}>{t("addLocation")}</h3>
+              <h3 style={{ paddingTop: "60px" }}>{t("location.add")}</h3>
               <form className="mt-4" style={{ maxHeight: "70vh" }}>
                 <div className="row">
                   <div className="mb-3 col-md-6">
-                    <label className="form-label">{t("name")}</label>
+                    <label className="form-label">{t("location.name")}</label>
                     <input type="text" className="form-control" />
                   </div>
                   <div className="mb-3 col-md-6">
-                    <label className="form-label">{t("address")}</label>
+                    <label className="form-label">{t("location.address")}</label>
                     <input type="text" className="form-control" />
                   </div>
                 </div>
 
                 <div className="row">
                   <div className="mb-3 col-md-6">
-                    <label className="form-label">{t("pipeline")}</label>
+                    <label className="form-label">{t("location.pipeline")}</label>
                     <input type="text" className="form-control" />
                   </div>
                   <div className="mb-3 col-md-6">
-                    <label className="form-label">{t("dueDate")}</label>
+                    <label className="form-label">{t("location.dueDate")}</label>
                     <input type="date" className="form-control" />
                   </div>
                 </div>
 
                 <div className="row">
                   <div className="mb-3 col-md-6">
-                    <label className="form-label">{t("chainage")}</label>
+                    <label className="form-label">{t("location.chainage")}</label>
                     <input type="text" className="form-control" />
                   </div>
                   <div className="mb-3 col-md-6">
-                    <label className="form-label">{t("landSurvey")}</label>
+                    <label className="form-label">{t("location.landSurvey")}</label>
                     <select className="form-control">
-                      <option value="">{t("selectOption")}</option>
-                      <option value="completed">{t("completed")}</option>
-                      <option value="pending">{t("pending")}</option>
+                      <option value="">{t("general.selectOption")}</option>
+                      <option value="completed">{t("location.completed")}</option>
+                      <option value="pending">{t("location.pending")}</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="mb-3">
-                  <label className="form-label">{t("description")}</label>
+                  <label className="form-label">{t("location.description")}</label>
                   <textarea className="form-control" rows={3}></textarea>
                 </div>
 
@@ -217,10 +185,10 @@ export const Dashboard: React.FC = () => {
                     className="btn btn-secondary me-2"
                     onClick={() => setIsAddFormOpen(false)}
                   >
-                    {t("cancel")}
+                    {t("general.cancel")}
                   </button>
                   <button type="submit" className="btn btn-primary">
-                    {t("save")}
+                    {t("general.save")}
                   </button>
                 </div>
               </form>

@@ -42,20 +42,6 @@
   border-radius: 0.5rem;
 }
 
-
-@media (max-width: 768px) {
-  .action-bar {
-    justify-content: center;
-  }
-
-  .action-bar .btn {
-    width: auto;
-    display: inline-flex;
-    align-items: center;
-  }
-}
-
-
 .table-responsive {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -89,44 +75,6 @@
   background: #ccc;
   border-radius: 4px;
 }
-
-
-@media (max-width: 768px) {
-  .location-form {
-    width: 100%;
-    padding: 16px;
-  }
-
-  .location-form input,
-  .location-form select,
-  .location-form textarea {
-    font-size: 14px;
-    padding: 6px 10px;
-  }
-
-  .location-form label {
-    font-size: 14px;
-  }
-
-  .location-form h3 {
-    font-size: 18px;
-    padding-top: 50px;
-  }
-
-  .location-form button {
-    font-size: 14px;
-    padding: 6px 12px;
-  }
-}
-
-
-
-@media (max-width: 768px) {
-  .location-form {
-    width: 100%;
-  }
-}
-
 
 .dark .table {
   background-color: #222;
@@ -218,6 +166,49 @@
 .dark .location-form .btn-secondary:hover {
   background-color: #555;
 }
+
+@media (max-width: 768px) {
+  /* Action Bar */
+  .action-bar {
+    justify-content: center;
+  }
+
+  .action-bar .btn {
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Location Form */
+  .location-form {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .location-form h3 {
+    font-size: 1.125rem; 
+    padding-top: 3.125rem;
+  }
+
+  .location-form label,
+  .location-form input,
+  .location-form select,
+  .location-form textarea,
+  .location-form button {
+    font-size: 0.875rem;
+  }
+
+  .location-form input,
+  .location-form select,
+  .location-form textarea {
+    padding: 6px 10px;
+  }
+
+  .location-form button {
+    padding: 6px 12px;
+  }
+}
+
 
 
   
