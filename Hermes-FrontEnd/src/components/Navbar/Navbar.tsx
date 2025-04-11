@@ -20,13 +20,13 @@ export const Navbar: React.FC = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#">{t('about')}</a>
+              <a className="nav-link" href="#">{t('general.about')}</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">{t('features')}</a>
+              <a className="nav-link" href="#">{t('general.features')}</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">{t('contact')}</a>
+              <a className="nav-link" href="#">{t('general.contact')}</a>
             </li>
           </ul>
           <div className="d-flex align-items-center">

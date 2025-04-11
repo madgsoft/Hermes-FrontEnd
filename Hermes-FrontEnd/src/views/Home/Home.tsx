@@ -22,14 +22,14 @@ export const Home: React.FC = () => {
           className="text-center"
         >
           <h1 className="title">Hermes</h1>
-          <p className="description">{t('description')}</p>
+          <p className="description">{t('location.description')}</p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="cta-button"
             onClick={() => navigate('/dashboard')}
           >
-            {t('tryNow')}
+            {t('general.tryNow')}
           </motion.button>
         </motion.div>
       </div>
